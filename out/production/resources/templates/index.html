@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block layout:fragment="content">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Добавить новый ТРК</div>
+                <div class="panel-body">
+                    <form method="post" class="form-group" action="/dispenser">
+
+                        <select class="form-group" >
+                            <option class="form-control" type="text" name="pistol" id="pistol"  th:text="пистолет"></option>
+                        </select>
+
+                        <select class="form-group" >
+                            <option class="form-control" type="text" name="filter" id="filter" th:text="фильтр"></option>
+                            <option for="null"></option>
+                        </select>
+
+                        <select class="form-group" >
+                            <option class="form-control" type="text" name="stopPlug" id="stopPlug" th:text="штекер"></option>
+                            <option for="null"></option>
+
+                        </select>
+                        <br/>
+                        <select class="form-group" >
+                            <option class="form-control" type="text" name="engine" id="engine" th:text="двигатель"></option>
+                        </select>
+                        <br/>
+                        <input class="btn btn-primary" type="submit" value="Save"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Item List</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>pistol</th>
+                            <th>engine</th>
+                            <th>filter</th>
+                            <th>stopPlug</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="dispenser : ${dispensers}">
+                            <td th:text="${dispenser.getPistol()}">pistol</td>
+                            <td th:text="${dispenser.getEngine()}">engine</td>
+                            <td th:text="${dispenser.getFilter()}">filter</td>
+                            <td th:text="${dispenser.getStopPlug()}">stop plug</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
